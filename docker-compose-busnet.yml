@@ -6,8 +6,8 @@ services:
         stdin_open: true
         tty: true
         volumes:
-            - ./params.dat:/root/.multichain/ChainBusnet/params2.dat
-            - ./multichain.conf:/root/.multichain/ChainBusnet/multichain2.conf
+            - ./params.dat:/root/params.dat
+            - ./multichain.conf:/root/multichain.conf
         ports:
             - "7447:7447"
             - "8000:8000"
