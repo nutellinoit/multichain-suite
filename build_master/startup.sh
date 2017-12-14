@@ -3,11 +3,9 @@
 echo "Siamo nella magica chain:"
 echo ${NOMECHAIN}
 
-multichain-util create ${NOMECHAIN}
-
-cp /root/params.dat /root/.multichain/${NOMECHAIN}/params.dat
-cp /root/multichain.conf /root/.multichain/${NOMECHAIN}/multichain.conf
-
-sed -i -e "s/REPLACE_CHAIN_NAME/${NOMECHAIN}/g" /root/.multichain/${NOMECHAIN}/params.dat
+if [ ! -f /root/.multichain/${NOMECHAIN}/params.dat ]; then
+    echo "La chain non esiste ancora, la creo"
+    multichain-util create ${NOMECHAIN} -maximum-block-size=1000000 -default-network-port=7447 -default-rpc-port=8000
+fi
 
 multichaind ${NOMECHAIN} -shrinkdebugfilesize -printtoconsole

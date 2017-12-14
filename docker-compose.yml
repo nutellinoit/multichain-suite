@@ -2,19 +2,21 @@ version: '2'
 
 services:
     masternode:
-        image: kunstmaan/master-multichain
-        build: ./master
+        image: nutellinoit/master-multichain:1.0
         stdin_open: true
         tty: true
+        volumes:
+            - ./data/:/root/.multichain/
         ports:
             - "7447:7447"
             - "8000:8000"
         environment:
             VIRTUAL_HOST: mulichain-master.docker
             VIRTUAL_PORT: 8000
+            NOMECHAIN: ChainBusnet
+        restart: always
     explorer:
-        image: kunstmaan/explorer-multichain
-        build: ./explorer
+        image: nutellinoit/explorer-multichain:1.0
         stdin_open: true
         tty: true
         depends_on:
@@ -24,23 +26,30 @@ services:
         environment:
             VIRTUAL_HOST: multichain-explorer.docker
             VIRTUAL_PORT: 2750
+            NOMECHAIN: ChainBusnet
+            CONNECT_TO: ChainBusnet@masternode:7447
         links:
             - masternode
+        restart: always
     slavenode1:
-        image: kunstmaan/node-multichain
-        build: ./node
+        image: nutellinoit/node-multichain:1.0
         stdin_open: true
         tty: true
         depends_on:
             - masternode
         links:
             - masternode
+        environment:
+          CONNECT_TO: ChainBusnet@masternode:7447
+        restart: always
     slavenode2:
-        image: kunstmaan/node-multichain
-        build: ./node
+        image: nutellinoit/node-multichain:1.0
         stdin_open: true
         tty: true
         depends_on:
             - masternode
         links:
             - masternode
+        environment:
+          CONNECT_TO: ChainBusnet@masternode:7447
+        restart: always
