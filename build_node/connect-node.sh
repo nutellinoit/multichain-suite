@@ -2,5 +2,5 @@
 
 sleep 30
 
-ip=`getent hosts masternode | awk -F' ' '{print $1}'`
-multichaind busnetchain@$ip:7447 -printtoconsole -shrinkdebugfilesize
+ip=${CONNECT_TO}
+multichaind $ip -printtoconsole -shrinkdebugfilesize

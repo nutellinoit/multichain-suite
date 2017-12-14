@@ -1,4 +1,4 @@
-FROM ubuntu:wily
+FROM ubuntu:xenial
 MAINTAINER Samuele Chiocca
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -17,12 +17,10 @@ RUN apt-get update \
         && cd /tmp \
         && rm -Rf multichain*
 
-
-RUN multichain-util create busnetchain
-ADD ./params.dat /root/.multichain/busnetchain/params.dat
-ADD ./multichain.conf /root/.multichain/busnetchain/multichain.conf
+ADD ./startup.sh /root/startup.sh
+RUN chmod 777 /root/startup.sh
 
 EXPOSE 7447
 EXPOSE 8000
 
-CMD ["multichaind", "busnetchain", "-shrinkdebugfilesize", "-printtoconsole"]
+CMD ["/root/startup.sh"]

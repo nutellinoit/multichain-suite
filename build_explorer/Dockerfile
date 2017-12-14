@@ -1,4 +1,4 @@
-FROM ubuntu:wily
+FROM ubuntu:xenial
 MAINTAINER Samuele Chiocca
 
 ENV DEBIAN_FRONTEND noninteractive

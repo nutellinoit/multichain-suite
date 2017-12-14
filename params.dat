@@ -13,7 +13,7 @@
 # Basic chain parameters
 
 chain-protocol = multichain             # Chain protocol: multichain (permissions, native assets) or bitcoin
-chain-description = MultiChain busnetchain # Chain description, embedded in genesis block coinbase, max 256 chars.
+chain-description = MultiChain          # Chain description, embedded in genesis block coinbase, max 256 chars.
 chain-is-testnet = false                # Content of the 'testnet' field of API responses, for compatibility.
 target-block-time = 15                  # Target time between blocks (transaction confirmation delay), seconds. (5 - 86400)
 maximum-block-size = 1000000            # Maximum block size in bytes. (1000 - 1000000000)
@@ -73,7 +73,7 @@ max-std-element-size = 600              # Maximum size of data elements in stand
 
 default-network-port = 7447             # Default TCP/IP port for peer-to-peer connection with other nodes.
 default-rpc-port = 8000                 # Default TCP/IP port for incoming JSON-RPC API requests.
-chain-name = dockerchain                # Chain name, used as first argument for multichaind and multichain-cli.
+chain-name = REPLACE_CHAIN_NAME                # Chain name, used as first argument for multichaind and multichain-cli.
 protocol-version = 10004                # Protocol version at the moment of blockchain genesis.
 network-message-start = faf4e0e9        # Magic value sent as the first 4 bytes of every peer-to-peer message.
 address-pubkeyhash-version = 00bcad3b   # Version bytes used for pay-to-pubkeyhash addresses.
