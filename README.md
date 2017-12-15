@@ -2,6 +2,9 @@
 
 Repository principale di sviluppo di blockchain basate sul servizio multichain
 
+Link per client di esempio : [example_client](example_client)
+
+
 ## Immagini dei container
 
 * [nutellinoit/master-multichain](https://hub.docker.com/r/nutellinoit/master-multichain/): Nodo Master.
