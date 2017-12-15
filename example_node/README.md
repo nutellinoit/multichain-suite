@@ -2,6 +2,26 @@
 
 Cartella di test per un nodo client alla multichain
 
+
+## Prerequisiti
+
+* Avere docker installato
+    * Mac https://docs.docker.com/docker-for-mac/install/
+    * Windows https://docs.docker.com/docker-for-windows/install/
+    * Linux
+        * ```bash
+           curl -fsSL get.docker.com -o get-docker.sh
+           sh get-docker.sh
+          ```
+* Avere docker-compose installato
+    * Su windows e Mac dovrebbe installarsi automaticamente, altrimenti seguire la guida qui: https://docs.docker.com/compose/install/
+    * Linux
+      * ```bash
+         # esempio su debian
+         apt-get install python-pip
+         pip install docker-compose
+        ```
+
 ## Immagini dei container
 
 * [nutellinoit/node-multichain](https://hub.docker.com/r/nutellinoit/node-multichain/): Nodo Slave che si connette al master.
@@ -11,7 +31,7 @@ Cartella di test per un nodo client alla multichain
 Aprire il file ```docker-compose.yml``` e modificare la variabile di ambiente
 
 ```yml
-CONNECT_TO: nomechain@IP:7447
+CONNECT_TO: ticketchain@IP:7447
 ```
 
 ## Avviare il client
@@ -31,5 +51,5 @@ Quando si avvia il client, non si verrà accettati automaticamente alla chain, s
 
 # esempio
 
-multichain-cli ChainBusnet grant TOKENDELNODO connect,send,receive
+multichain-cli ticketchain grant IDNODO connect,send,receive
 ```

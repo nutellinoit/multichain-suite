@@ -5,5 +5,5 @@ services:
         stdin_open: true
         tty: true
         environment:
-          CONNECT_TO: ticketchain@192.168.100.114:7447
+          CONNECT_TO: ticketchain@blockchain.busnet.it:7447
         restart: always

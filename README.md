@@ -25,5 +25,5 @@ sudo docker-compose up
 Quando si avvia la soluzione, l'unico nodo che sarà in grado di connettersi sarà il master, gli altri bisogna accettarli.
 
 ```bash
-docker-compose exec masternode multichain-cli ChainBusnet grant TOKENDELNODO connect,send,receive
+docker-compose exec masternode multichain-cli ticketchain grant IDNODO connect,send,receive
 ```
