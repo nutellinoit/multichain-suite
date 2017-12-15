@@ -13,7 +13,7 @@ services:
         environment:
             VIRTUAL_HOST: mulichain-master.docker
             VIRTUAL_PORT: 8000
-            NOMECHAIN: ChainBusnet
+            NOMECHAIN: ticketchain
         restart: always
     explorer:
         image: nutellinoit/explorer-multichain:1.0
@@ -26,8 +26,8 @@ services:
         environment:
             VIRTUAL_HOST: multichain-explorer.docker
             VIRTUAL_PORT: 2750
-            NOMECHAIN: ChainBusnet
-            CONNECT_TO: ChainBusnet@masternode:7447
+            NOMECHAIN: ticketchain
+            CONNECT_TO: ticketchain@masternode:7447
         links:
             - masternode
         restart: always
@@ -40,7 +40,7 @@ services:
         links:
             - masternode
         environment:
-          CONNECT_TO: ChainBusnet@masternode:7447
+          CONNECT_TO: ticketchain@masternode:7447
         restart: always
     slavenode2:
         image: nutellinoit/node-multichain:1.0
@@ -51,5 +51,5 @@ services:
         links:
             - masternode
         environment:
-          CONNECT_TO: ChainBusnet@masternode:7447
+          CONNECT_TO: ticketchain@masternode:7447
         restart: always
