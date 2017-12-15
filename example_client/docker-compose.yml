@@ -1,0 +1,9 @@
+version: '2'
+services:
+    node1:
+        image: nutellinoit/node-multichain:1.0
+        stdin_open: true
+        tty: true
+        environment:
+          CONNECT_TO: ChainBusnet@192.168.100.114:7447
+        restart: always
