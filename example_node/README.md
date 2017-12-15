@@ -9,6 +9,7 @@ Cartella di test per un nodo client alla multichain
     * Mac https://docs.docker.com/docker-for-mac/install/
     * Windows https://docs.docker.com/docker-for-windows/install/
     * Linux
+
 ```bash
 curl -fsSL get.docker.com -o get-docker.sh
 sh get-docker.sh
@@ -16,6 +17,7 @@ sh get-docker.sh
 * Avere docker-compose installato
     * Su windows e Mac dovrebbe installarsi automaticamente, altrimenti seguire la guida qui: https://docs.docker.com/compose/install/
     * Linux
+
 ```bash
  # esempio su debian
  apt-get install python-pip
