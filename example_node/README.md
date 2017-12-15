@@ -30,15 +30,16 @@ sh get-docker.sh
 
 ## Configurazione
 
-Aprire il file ```docker-compose.yml``` e modificare la variabile di ambiente
+L'indirizzo di connessione alla chain è all'interno del file ```docker-compose.yml``` ovvero:
 
 ```yml
-CONNECT_TO: ticketchain@IP:7447
+        environment:
+          CONNECT_TO: ticketchain@blockchain.busnet.it:7447
 ```
 
 ## Avviare il client
 
-Avviare con il ```docker-compose.yml```:
+Avviare con il ```docker-compose.yml``` (bisogna essere posizionati nel terminale nella cartella contenente il file docker-compose.yml):
 
 ```
 sudo docker-compose up
@@ -52,6 +53,5 @@ Quando si avvia il client, non si verrà accettati automaticamente alla chain, s
 ```bash
 
 # esempio
-
 multichain-cli ticketchain grant IDNODO connect,send,receive
 ```
