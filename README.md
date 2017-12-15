@@ -2,7 +2,7 @@
 
 Repository principale di sviluppo di blockchain basate sul servizio multichain
 
-Link per client di esempio : [example_client](example_client)
+Link per client di esempio : [example_node](example_node)
 
 
 ## Immagini dei container

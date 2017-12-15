@@ -31,25 +31,25 @@ services:
         links:
             - masternode
         restart: always
-    slavenode1:
-        image: nutellinoit/node-multichain:1.0
-        stdin_open: true
-        tty: true
-        depends_on:
-            - masternode
-        links:
-            - masternode
-        environment:
-          CONNECT_TO: ticketchain@masternode:7447
-        restart: always
-    slavenode2:
-        image: nutellinoit/node-multichain:1.0
-        stdin_open: true
-        tty: true
-        depends_on:
-            - masternode
-        links:
-            - masternode
-        environment:
-          CONNECT_TO: ticketchain@masternode:7447
-        restart: always
+    #slavenode1:
+    #    image: nutellinoit/node-multichain:1.0
+    #    stdin_open: true
+    #    tty: true
+    #    depends_on:
+    #        - masternode
+    #    links:
+    #        - masternode
+    #    environment:
+    #      CONNECT_TO: ticketchain@masternode:7447
+    #    restart: always
+    #slavenode2:
+    #    image: nutellinoit/node-multichain:1.0
+    #    stdin_open: true
+    #    tty: true
+    #    depends_on:
+    #        - masternode
+    #    links:
+    #        - masternode
+    #    environment:
+    #      CONNECT_TO: ticketchain@masternode:7447
+    #    restart: always
