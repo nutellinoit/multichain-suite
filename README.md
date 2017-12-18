@@ -27,3 +27,20 @@ Quando si avvia la soluzione, l'unico nodo che sarà in grado di connettersi sar
 ```bash
 docker-compose exec masternode multichain-cli ticketchain grant IDNODO connect,send,receive
 ```
+
+
+
+
+
+
+#### UTILI
+
+```
+
+#Sul multichain.conf
+
+rpcuser=multichainrpc
+rpcpassword=79pgKQusiH3VDVpyzsM6e3kRz6gWNctAwgJvymG3iiuz
+rpcallowip=0.0.0.0/0.0.0.0
+rpcport=8000
+```

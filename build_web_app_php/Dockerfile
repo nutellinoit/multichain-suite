@@ -14,3 +14,7 @@ RUN pear install phpdoc/phpDocumentor
 
 ADD ./rootfs /code
 
+ADD ./startup.sh /root/startup.sh
+RUN chmod 777 /root/startup.sh
+
+CMD ["/root/startup.sh"]

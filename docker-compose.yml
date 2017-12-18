@@ -2,7 +2,7 @@ version: '2'
 
 services:
     masternode:
-        image: nutellinoit/master-multichain:1.0
+        image: nutellinoit/master-multichain:1.1
         stdin_open: true
         tty: true
         volumes:
@@ -14,6 +14,15 @@ services:
             VIRTUAL_HOST: mulichain-master.docker
             VIRTUAL_PORT: 8000
             NOMECHAIN: ticketchain
+            #Params used only on creation
+            SETUP_maximum_block_size: 1000000
+            SETUP_default_network_port: 7447
+            SETUP_default_rpc_port: 8000
+            SETUP_anyone_can_connect: "true"
+            SETUP_anyone_can_send: "true"
+            SETUP_anyone_can_receive: "true"
+            SETUP_anyone_can_mine: "true"
+            SETUP_mining_diversity: 0.75
         restart: always
     explorer:
         image: nutellinoit/explorer-multichain:1.0
@@ -31,25 +40,38 @@ services:
         links:
             - masternode
         restart: always
-    #slavenode1:
-    #    image: nutellinoit/node-multichain:1.0
-    #    stdin_open: true
-    #    tty: true
-    #    depends_on:
-    #        - masternode
-    #    links:
-    #        - masternode
-    #    environment:
-    #      CONNECT_TO: ticketchain@masternode:7447
-    #    restart: always
-    #slavenode2:
-    #    image: nutellinoit/node-multichain:1.0
-    #    stdin_open: true
-    #    tty: true
-    #    depends_on:
-    #        - masternode
-    #    links:
-    #        - masternode
-    #    environment:
-    #      CONNECT_TO: ticketchain@masternode:7447
-    #    restart: always
+
+
+    slavenode1:
+        image: nutellinoit/node-multichain:1.0
+        stdin_open: true
+        tty: true
+        depends_on:
+            - masternode
+        links:
+            - masternode
+        environment:
+          CONNECT_TO: ticketchain@masternode:7447
+        restart: always
+    slavenode2:
+        image: nutellinoit/node-multichain:1.0
+        stdin_open: true
+        tty: true
+        depends_on:
+            - masternode
+        links:
+            - masternode
+        environment:
+          CONNECT_TO: ticketchain@masternode:7447
+        restart: always
+    slavenode3:
+        image: nutellinoit/node-multichain:1.0
+        stdin_open: true
+        tty: true
+        depends_on:
+            - masternode
+        links:
+            - masternode
+        environment:
+          CONNECT_TO: ticketchain@masternode:7447
+        restart: always

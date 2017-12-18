@@ -74,9 +74,11 @@
 		global $multichain_chain;
 		
 		$args=func_get_args();
-		
-		return json_rpc_send($multichain_chain['rpchost'], $multichain_chain['rpcport'], $multichain_chain['rpcuser'],
-			$multichain_chain['rpcpassword'], $method, array_slice($args, 1));
+
+
+
+		return json_rpc_send($multichain_chain['rpchost'], $multichain_chain['rpcport'], getenv("RPCUSER"),
+            getenv("RPCPASSWORD"), $method, array_slice($args, 1));
 	}
 	
 	function output_rpc_error($error)
