@@ -13,7 +13,8 @@ if [ ! -f /root/.multichain/${NOMECHAIN}/params.dat ]; then
      -anyone-can-send=${SETUP_anyone_can_send} \
      -anyone-can-receive=${SETUP_anyone_can_receive} \
      -anyone-can-mine=${SETUP_anyone_can_mine} \
-     -mining-diversity=${SETUP_mining_diversity}
+     -mining-diversity=${SETUP_mining_diversity} \
+     -anyone-can-activate=${SETUP_anyone_can_activate}
 
 fi
 

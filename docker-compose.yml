@@ -2,7 +2,7 @@ version: '2'
 
 services:
     masternode:
-        image: nutellinoit/master-multichain:1.1
+        image: nutellinoit/master-multichain:1.2
         stdin_open: true
         tty: true
         volumes:
@@ -23,6 +23,7 @@ services:
             SETUP_anyone_can_receive: "true"
             SETUP_anyone_can_mine: "true"
             SETUP_mining_diversity: 0.75
+            SETUP_anyone_can_activate: "true"
         restart: always
     explorer:
         image: nutellinoit/explorer-multichain:1.0
@@ -43,7 +44,7 @@ services:
 
 
     slavenode1:
-        image: nutellinoit/node-multichain:1.0
+        image: nutellinoit/node-multichain:1.1
         stdin_open: true
         tty: true
         depends_on:
@@ -54,7 +55,7 @@ services:
           CONNECT_TO: ticketchain@masternode:7447
         restart: always
     slavenode2:
-        image: nutellinoit/node-multichain:1.0
+        image: nutellinoit/node-multichain:1.1
         stdin_open: true
         tty: true
         depends_on:
@@ -65,7 +66,7 @@ services:
           CONNECT_TO: ticketchain@masternode:7447
         restart: always
     slavenode3:
-        image: nutellinoit/node-multichain:1.0
+        image: nutellinoit/node-multichain:1.1
         stdin_open: true
         tty: true
         depends_on:
