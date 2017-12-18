@@ -20,6 +20,10 @@ RUN apt-get update \
 ADD ./startup.sh /root/startup.sh
 RUN chmod 777 /root/startup.sh
 
+ADD ./multichain.conf /root/examplemultichain.conf
+
+RUN chmod 777 /root/examplemultichain.conf
+
 EXPOSE 7447
 EXPOSE 8000
 
