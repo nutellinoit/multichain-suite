@@ -42,16 +42,12 @@ L'indirizzo di connessione alla chain è all'interno del file ```docker-compose.
 Avviare con il ```docker-compose.yml``` (bisogna essere posizionati nel terminale nella cartella contenente il file docker-compose.yml):
 
 ```
-sudo docker-compose up
+sudo docker-compose up -d && sudo sleep 40 && sudo docker-compose stop && sudo docker-compose up
 ```
 
 
-## Accedere alla chain
+## Accedere al proprio nodo
 
-Quando si avvia il client, non si verrà accettati automaticamente alla chain, si dovrà inviare il seguente messaggio ad assistenza@busnet.it per avere il client operativo e collegato alla chain.
+Quando si avvia il client si verrà solamente aggiunti in modalità connect alla chain. Per effettuare transazioni bisogna avere il permesso di send,receive. Per trovare i propri indirizzi basta accedere a http://localhost:8080 sotto la voce *My Addresses*
 
-```bash
-
-# esempio
-multichain-cli ticketchain grant IDNODO connect,send,receive
-```
+Comunicate questo indirizzo ad assistenza@busnet.it , a breve creeremo anche una chat slack.
