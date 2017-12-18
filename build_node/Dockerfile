@@ -3,6 +3,11 @@ MAINTAINER Samuele Chiocca
 
 ENV DEBIAN_FRONTEND noninteractive
 
+RUN add-apt-repository main
+RUN add-apt-repository universe
+RUN add-apt-repository restricted
+RUN add-apt-repository multiverse
+
 RUN apt-get update \
         && apt-get upgrade -q -y \
         && apt-get dist-upgrade -q -y \

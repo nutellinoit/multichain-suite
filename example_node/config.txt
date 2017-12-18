@@ -1,0 +1,13 @@
+# Define your MultiChain node credentials below.
+
+default.name=TicketChain                   # name to display in the web interface
+default.rpchost=node1              # IP address of MultiChain node
+default.rpcport=8000                  # usually default-rpc-port from params.dat
+default.rpcuser=multichainrpc          # username for RPC from multichain.conf
+default.rpcpassword=Htgm8WzmgkbEsySMXdiyGeVeYPb4xoop93xsvshUs6WY                   # password for RPC from multichain.conf
+
+# You can configure support for other nodes using a word other than 'default':
+#
+# another.name=...
+# another.rpchost=...
+# ...etc...

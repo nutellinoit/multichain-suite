@@ -7,3 +7,31 @@ services:
         environment:
           CONNECT_TO: ticketchain@blockchain.busnet.it:7447
         restart: always
+        volumes:
+            - ./data/:/root/.multichain/
+        networks:
+          main:
+            aliases:
+              - node1
+    web:
+        image: nutellinoit/web-app-nginx-multichain:1.0
+        ports:
+            - "8080:80"
+        volumes:
+            - ./config.txt:/code/config.txt
+        networks:
+          main:
+            aliases:
+              - web
+        restart: always
+    php:
+        image: nutellinoit/web-app-php-multichain:1.0
+        restart: always
+        volumes:
+            - ./config.txt:/code/config.txt
+        networks:
+          main:
+            aliases:
+              - php
+networks:
+    main:
