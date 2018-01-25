@@ -55,7 +55,7 @@ services:
               aliases:
                 - explorer
 
-    slavenode1:
+    slavenode:
         image: nutellinoit/node-multichain:1.1
         stdin_open: true
         tty: true
@@ -69,37 +69,7 @@ services:
         networks:
           main:
             aliases:
-              - slavenode1
-    slavenode2:
-        image: nutellinoit/node-multichain:1.1
-        stdin_open: true
-        tty: true
-        depends_on:
-            - masternode
-        links:
-            - masternode
-        environment:
-          CONNECT_TO: ticketchain@masternode:7447
-        restart: always
-        networks:
-          main:
-            aliases:
-              - slavenode2
-    slavenode3:
-        image: nutellinoit/node-multichain:1.1
-        stdin_open: true
-        tty: true
-        depends_on:
-            - masternode
-        links:
-            - masternode
-        environment:
-          CONNECT_TO: ticketchain@masternode:7447
-        restart: always
-        networks:
-          main:
-            aliases:
-              - slavenode3
+              - slavenode
     web:
         image: nutellinoit/web-app-nginx-multichain:1.1
         ports:
