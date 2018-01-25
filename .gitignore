@@ -1,3 +1,5 @@
 docker-build.yml
 data
 .idea/
+.vagrant
+.DS_Store

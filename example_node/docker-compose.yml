@@ -5,14 +5,14 @@ services:
         stdin_open: true
         tty: true
         environment:
-          CONNECT_TO: ticketchain@192.168.100.114:7447
-          NOMECHAIN: ticketchain
-          SET_MULTICHAIN : "yes"
-          RPCUSERVAR: "user1"
-          RPCPASSWORDVAR: "Htgm8WzmgkbEsySMXdiyGeVeYPb4xoop93xsvshUs6WY"
+          CONNECT_TO: ${CONNECT_TO}
+          NOMECHAIN: ${NOMECHAIN}
+          SET_MULTICHAIN : ${SET_MULTICHAIN}
+          RPCUSERVAR: ${RPCUSERVAR}
+          RPCPASSWORDVAR: ${RPCPASSWORDVAR}
         restart: always
         volumes:
-            - ./data/:/root/.multichain/
+            - ${DATASAVEPATH}:/root/.multichain/
         networks:
           main:
             aliases:
@@ -20,7 +20,7 @@ services:
     web:
         image: nutellinoit/web-app-nginx-multichain:1.1
         ports:
-            - "8080:80"
+            - "${NGINX_HOST_HTTP_PORT}:80"
         networks:
           main:
             aliases:
@@ -30,8 +30,8 @@ services:
         image: nutellinoit/web-app-php-multichain:1.1
         restart: always
         environment:
-          RPCUSER: "user1"
-          RPCPASSWORD: "Htgm8WzmgkbEsySMXdiyGeVeYPb4xoop93xsvshUs6WY"
+          RPCUSER: ${RPCUSERVAR}
+          RPCPASSWORD: ${RPCPASSWORDVAR}
         networks:
           main:
             aliases:

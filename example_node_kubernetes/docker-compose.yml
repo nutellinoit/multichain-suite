@@ -1,0 +1,15 @@
+version: '2'
+services:
+    node1:
+        image: nutellinoit/node-multichain:1.1
+        stdin_open: true
+        tty: true
+        environment:
+          CONNECT_TO: ${CONNECT_TO}
+          NOMECHAIN: ${NOMECHAIN}
+          SET_MULTICHAIN : ${SET_MULTICHAIN}
+          RPCUSERVAR: ${RPCUSERVAR}
+          RPCPASSWORDVAR: ${RPCPASSWORDVAR}
+        restart: always
+        #volumes:
+        #    - ${DATASAVEPATH}:/root/.multichain/

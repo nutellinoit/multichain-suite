@@ -8,26 +8,26 @@ services:
         volumes:
             - ./data/:/root/.multichain/
         ports:
-            - "7447:7447"
-            - "8000:8000"
+            - "${CONNECT_PORT}:7447"
+            - "${SETUP_default_rpc_port}:8000"
         environment:
-            VIRTUAL_HOST: mulichain-master.docker
-            VIRTUAL_PORT: 8000
-            NOMECHAIN: ticketchain
+            VIRTUAL_HOST: ${NOMECHAIN}.docker
+            VIRTUAL_PORT: ${SETUP_default_rpc_port}
+            NOMECHAIN: ${NOMECHAIN}
             #Params used only on creation
-            SETUP_maximum_block_size: 1000000
-            SETUP_default_network_port: 7447
-            SETUP_default_rpc_port: 8000
-            SETUP_anyone_can_connect: "true"
-            SETUP_anyone_can_send: "false"
-            SETUP_anyone_can_receive: "false"
-            SETUP_anyone_can_mine: "true"
-            SETUP_mining_diversity: 0.75
-            SETUP_anyone_can_activate: "false"
+            SETUP_maximum_block_size: ${SETUP_maximum_block_size}
+            SETUP_default_network_port: ${SETUP_default_network_port}
+            SETUP_default_rpc_port: ${SETUP_default_rpc_port}
+            SETUP_anyone_can_connect: ${SETUP_anyone_can_connect}
+            SETUP_anyone_can_send: ${SETUP_anyone_can_send}
+            SETUP_anyone_can_receive: ${SETUP_anyone_can_receive}
+            SETUP_anyone_can_mine: ${SETUP_anyone_can_mine}
+            SETUP_mining_diversity: ${SETUP_mining_diversity}
+            SETUP_anyone_can_activate: ${SETUP_anyone_can_activate}
             #Per la connessione del pannello web
-            SET_MULTICHAIN: "yes"
-            RPCUSERVAR: "rootuser"
-            RPCPASSWORDVAR: "Htgm8W238727837ySMXdiyGeVeYPb4xoop93xsvshUs6WY"
+            SET_MULTICHAIN: ${SET_MULTICHAIN}
+            RPCUSERVAR: ${RPCUSERVAR}
+            RPCPASSWORDVAR: ${RPCPASSWORDVAR}
         restart: always
         networks:
             main:
@@ -41,12 +41,12 @@ services:
         depends_on:
             - masternode
         ports:
-            - "2750:2750"
+            - "${EXPLORER_PORT}:2750"
         environment:
-            VIRTUAL_HOST: multichain-explorer.docker
+            VIRTUAL_HOST: ${NOMECHAIN}-explorer.docker
             VIRTUAL_PORT: 2750
-            NOMECHAIN: ticketchain
-            CONNECT_TO: ticketchain@masternode:7447
+            NOMECHAIN: ${NOMECHAIN}
+            CONNECT_TO: ${NOMECHAIN}@masternode:7447
         links:
             - masternode
         restart: always
@@ -64,7 +64,7 @@ services:
         links:
             - masternode
         environment:
-          CONNECT_TO: ticketchain@masternode:7447
+          CONNECT_TO: ${NOMECHAIN}@masternode:7447
         restart: always
         networks:
           main:
@@ -73,7 +73,7 @@ services:
     web:
         image: nutellinoit/web-app-nginx-multichain:1.1
         ports:
-            - "8081:80"
+            - "${NGINX_PORT}:80"
         networks:
           main:
             aliases:
@@ -83,8 +83,8 @@ services:
         image: nutellinoit/web-app-php-multichain:1.1
         restart: always
         environment:
-          RPCUSER: "rootuser"
-          RPCPASSWORD: "Htgm8W238727837ySMXdiyGeVeYPb4xoop93xsvshUs6WY"
+          RPCUSER: ${RPCUSERVAR}
+          RPCPASSWORD: ${RPCPASSWORDVAR}
         networks:
           main:
             aliases:
