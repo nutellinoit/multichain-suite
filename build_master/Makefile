@@ -1,4 +1,4 @@
 build:
-	docker build -t nutellinoit/master-multichain:1.0 .
+	docker build -t nutellinoit/master-multichain:1.3 .
 push:
-	docker push nutellinoit/master-multichain:1.0
+	docker push nutellinoit/master-multichain:1.3

@@ -1,9 +1,40 @@
 version: '2'
 services:
     node1:
-        image: nutellinoit/node-multichain:1.0
+        image: nutellinoit/node-multichain:1.1
         stdin_open: true
         tty: true
         environment:
-          CONNECT_TO: ticketchain@blockchain.busnet.it:7447
+          CONNECT_TO: ticketchain@192.168.100.114:7447
+          NOMECHAIN: ticketchain
+          SET_MULTICHAIN : "yes"
+          RPCUSERVAR: "user1"
+          RPCPASSWORDVAR: "Htgm8WzmgkbEsySMXdiyGeVeYPb4xoop93xsvshUs6WY"
         restart: always
+        volumes:
+            - ./data/:/root/.multichain/
+        networks:
+          main:
+            aliases:
+              - node1
+    web:
+        image: nutellinoit/web-app-nginx-multichain:1.1
+        ports:
+            - "8080:80"
+        networks:
+          main:
+            aliases:
+              - web
+        restart: always
+    php:
+        image: nutellinoit/web-app-php-multichain:1.1
+        restart: always
+        environment:
+          RPCUSER: "user1"
+          RPCPASSWORD: "Htgm8WzmgkbEsySMXdiyGeVeYPb4xoop93xsvshUs6WY"
+        networks:
+          main:
+            aliases:
+              - php
+networks:
+    main:
