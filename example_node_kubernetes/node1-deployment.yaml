@@ -9,7 +9,7 @@ metadata:
     io.kompose.service: node1
   name: node1
 spec:
-  replicas: 4
+  replicas: 5
   strategy: {}
   template:
     metadata:
@@ -20,7 +20,7 @@ spec:
       containers:
       - env:
         - name: CONNECT_TO
-          value: ticketchain@192.168.1.69:7447
+          value: ticketchain@192.168.50.1:7447
         - name: NOMECHAIN
           value: ticketchain
         - name: RPCPASSWORDVAR

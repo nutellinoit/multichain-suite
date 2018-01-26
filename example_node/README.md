@@ -30,11 +30,10 @@ sh get-docker.sh
 
 ## Configurazione
 
-L'indirizzo di connessione alla chain è all'interno del file ```docker-compose.yml``` ovvero:
+L'indirizzo di connessione alla chain è all'interno del file ```.env``` ovvero:
 
-```yml
-        environment:
-          CONNECT_TO: ticketchain@blockchain.busnet.it:7447
+```bash
+CONNECT_TO=ticketchain@192.168.3.186:7447
 ```
 
 ## Avviare il client
@@ -48,6 +47,5 @@ sudo docker-compose up -d && sudo sleep 40 && sudo docker-compose stop && sudo d
 
 ## Accedere al proprio nodo
 
-Quando si avvia il client si verrà solamente aggiunti in modalità connect alla chain. Per effettuare transazioni bisogna avere il permesso di send,receive. Per trovare i propri indirizzi basta accedere a http://localhost:8080 sotto la voce *My Addresses*
+Quando si avvia il client si verrà solamente aggiunti in modalità connect alla chain. Per effettuare transazioni bisogna avere il permesso di send,receive. Per trovare i propri indirizzi basta accedere a http://localhost:8082 sotto la voce *My Addresses*
 
-Comunicate questo indirizzo ad assistenza@busnet.it , a breve creeremo anche una chat slack.
