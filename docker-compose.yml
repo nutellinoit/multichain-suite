@@ -85,6 +85,8 @@ services:
         environment:
           CONNECT_IP: masternode
           CONNECT_PORT: 8000
+          NOMECHAIN: ${NOMECHAIN}
+          SET_MULTICHAIN: ${SET_MULTICHAIN}
           RPCUSER: ${RPCUSERVAR}
           RPCPASSWORD: ${RPCPASSWORDVAR}
         networks:
