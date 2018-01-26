@@ -77,7 +77,7 @@
 
 
 
-		return json_rpc_send($multichain_chain['rpchost'], $multichain_chain['rpcport'], getenv("RPCUSER"),
+		return json_rpc_send( getenv("CONNECT_IP"), getenv("CONNECT_PORT"), getenv("RPCUSER"),
             getenv("RPCPASSWORD"), $method, array_slice($args, 1));
 	}
 	

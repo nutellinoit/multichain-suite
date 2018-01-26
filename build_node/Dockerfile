@@ -31,6 +31,7 @@ ADD ./connect-node.sh /root/connect-node.sh
 ADD ./multichain.conf /root/examplemultichain.conf
 
 RUN chmod 777 /root/examplemultichain.conf
+RUN chmod 777 /root/connect-node.sh
 
 EXPOSE 7447
 EXPOSE 8000

@@ -13,6 +13,7 @@ RUN pear channel-discover pear.phpdoc.org
 RUN pear install phpdoc/phpDocumentor
 
 ADD ./rootfs /code
+ADD config.txt /config.txt
 
 ADD ./startup.sh /root/startup.sh
 RUN chmod 777 /root/startup.sh

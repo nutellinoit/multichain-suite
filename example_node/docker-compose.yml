@@ -1,13 +1,13 @@
 version: '2'
 services:
     node1:
-        image: nutellinoit/node-multichain:1.1
+        image: nutellinoit/node-multichain:1.2
         stdin_open: true
         tty: true
         environment:
           CONNECT_TO: ${CONNECT_TO}
           NOMECHAIN: ${NOMECHAIN}
-          SET_MULTICHAIN : ${SET_MULTICHAIN}
+          SET_MULTICHAIN: ${SET_MULTICHAIN}
           RPCUSERVAR: ${RPCUSERVAR}
           RPCPASSWORDVAR: ${RPCPASSWORDVAR}
         restart: always
@@ -27,9 +27,13 @@ services:
               - web
         restart: always
     php:
-        image: nutellinoit/web-app-php-multichain:1.1
+        image: nutellinoit/web-app-php-multichain:1.5
         restart: always
         environment:
+          CONNECT_IP: node1
+          CONNECT_PORT: 8000
+          NOMECHAIN: ${NOMECHAIN}
+          SET_MULTICHAIN: ${SET_MULTICHAIN}
           RPCUSER: ${RPCUSERVAR}
           RPCPASSWORD: ${RPCPASSWORDVAR}
         networks:

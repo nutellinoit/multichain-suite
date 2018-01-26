@@ -80,9 +80,11 @@ services:
               - web
         restart: always
     php:
-        image: nutellinoit/web-app-php-multichain:1.1
+        image: nutellinoit/web-app-php-multichain:1.5
         restart: always
         environment:
+          CONNECT_IP: masternode
+          CONNECT_PORT: 8000
           RPCUSER: ${RPCUSERVAR}
           RPCPASSWORD: ${RPCPASSWORDVAR}
         networks:

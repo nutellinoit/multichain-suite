@@ -3,3 +3,4 @@ data
 .idea/
 .vagrant
 .DS_Store
+!/web_app_code/config.txt
