@@ -3,6 +3,7 @@
 Repository principale di sviluppo di blockchain basate sul servizio multichain
 
 Link per client di esempio : [example_node](example_node)
+Link per client di esempio su kubernetes : [example_node_kubernetes](example_node_kubernetes) (senza storage)
 
 
 ## Immagini dei container
@@ -22,6 +23,8 @@ sudo docker-compose up
 
 ## Accettazione dei peer
 
+NB: nell'evento del 26 non servirà
+
 Quando si avvia la soluzione, l'unico nodo che sarà in grado di connettersi sarà il master, gli altri bisogna accettarli.
 
 ```bash
@@ -32,15 +35,3 @@ docker-compose exec masternode multichain-cli ticketchain grant IDNODO connect,s
 
 
 
-
-#### UTILI
-
-```
-
-#Sul multichain.conf
-
-rpcuser=multichainrpc
-rpcpassword=79pgKQusiH3VDVpyzsM6e3kRz6gWNctAwgJvymG3iiuz
-rpcallowip=0.0.0.0/0.0.0.0
-rpcport=8000
-```
