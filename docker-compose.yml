@@ -54,22 +54,6 @@ services:
             main:
               aliases:
                 - explorer
-
-    slavenode:
-        image: nutellinoit/node-multichain:1.1
-        stdin_open: true
-        tty: true
-        depends_on:
-            - masternode
-        links:
-            - masternode
-        environment:
-          CONNECT_TO: ${NOMECHAIN}@masternode:7447
-        restart: always
-        networks:
-          main:
-            aliases:
-              - slavenode
     web:
         image: nutellinoit/web-app-nginx-multichain:1.1
         ports:
@@ -93,6 +77,138 @@ services:
           main:
             aliases:
               - php
+    slavenode1:
+        image: nutellinoit/node-multichain:1.1
+        stdin_open: true
+        tty: true
+        depends_on:
+            - masternode
+        links:
+            - masternode
+        environment:
+          CONNECT_TO: ${NOMECHAIN}@masternode:7447
+          NOMECHAIN: ${NOMECHAIN}
+          SET_MULTICHAIN: ${SET_MULTICHAIN}
+          RPCUSERVAR: ${RPCUSERVAR}
+          RPCPASSWORDVAR: ${RPCPASSWORDVAR}
+        restart: always
+        networks:
+          main:
+            aliases:
+              - slavenode1
+    web1:
+        image: nutellinoit/web-app-nginx-multichain:1.1
+        volumes:
+            - ./site8500.conf:/etc/nginx/conf.d/default.conf
+        ports:
+            - "8500:80"
+        networks:
+          main:
+            aliases:
+              - web1
+        restart: always
+    php1:
+        image: nutellinoit/web-app-php-multichain:1.5
+        restart: always
+        environment:
+          CONNECT_IP: slavenode1
+          CONNECT_PORT: 8000
+          NOMECHAIN: ${NOMECHAIN}
+          SET_MULTICHAIN: ${SET_MULTICHAIN}
+          RPCUSER: ${RPCUSERVAR}
+          RPCPASSWORD: ${RPCPASSWORDVAR}
+        networks:
+          main:
+            aliases:
+              - php1
+    slavenode2:
+        image: nutellinoit/node-multichain:1.1
+        stdin_open: true
+        tty: true
+        depends_on:
+            - masternode
+        links:
+            - masternode
+        environment:
+          CONNECT_TO: ${NOMECHAIN}@masternode:7447
+          NOMECHAIN: ${NOMECHAIN}
+          SET_MULTICHAIN: ${SET_MULTICHAIN}
+          RPCUSERVAR: ${RPCUSERVAR}
+          RPCPASSWORDVAR: ${RPCPASSWORDVAR}
+        restart: always
+        networks:
+          main:
+            aliases:
+              - slavenode2
+    web2:
+        image: nutellinoit/web-app-nginx-multichain:1.1
+        volumes:
+            - ./site8501.conf:/etc/nginx/conf.d/default.conf
+        ports:
+            - "8501:80"
+        networks:
+          main:
+            aliases:
+              - web2
+        restart: always
+    php2:
+        image: nutellinoit/web-app-php-multichain:1.5
+        restart: always
+        environment:
+          CONNECT_IP: slavenode2
+          CONNECT_PORT: 8000
+          NOMECHAIN: ${NOMECHAIN}
+          SET_MULTICHAIN: ${SET_MULTICHAIN}
+          RPCUSER: ${RPCUSERVAR}
+          RPCPASSWORD: ${RPCPASSWORDVAR}
+        networks:
+          main:
+            aliases:
+              - php2
+    slavenode3:
+        image: nutellinoit/node-multichain:1.1
+        stdin_open: true
+        tty: true
+        depends_on:
+            - masternode
+        links:
+            - masternode
+        environment:
+          CONNECT_TO: ${NOMECHAIN}@masternode:7447
+          NOMECHAIN: ${NOMECHAIN}
+          SET_MULTICHAIN: ${SET_MULTICHAIN}
+          RPCUSERVAR: ${RPCUSERVAR}
+          RPCPASSWORDVAR: ${RPCPASSWORDVAR}
+        restart: always
+        networks:
+          main:
+            aliases:
+              - slavenode3
+    web3:
+        image: nutellinoit/web-app-nginx-multichain:1.1
+        volumes:
+            - ./site8502.conf:/etc/nginx/conf.d/default.conf
+        ports:
+            - "8502:80"
+        networks:
+          main:
+            aliases:
+              - web3
+        restart: always
+    php3:
+        image: nutellinoit/web-app-php-multichain:1.5
+        restart: always
+        environment:
+          CONNECT_IP: slavenode3
+          CONNECT_PORT: 8000
+          NOMECHAIN: ${NOMECHAIN}
+          SET_MULTICHAIN: ${SET_MULTICHAIN}
+          RPCUSER: ${RPCUSERVAR}
+          RPCPASSWORD: ${RPCPASSWORDVAR}
+        networks:
+          main:
+            aliases:
+              - php3
 
 networks:
     main:
